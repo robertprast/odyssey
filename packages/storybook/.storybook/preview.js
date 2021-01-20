@@ -1,4 +1,5 @@
-import "@okta/odyssey";
+import "./preview.scss";
+
 
 export const parameters = {
   controls: { expanded: true },
