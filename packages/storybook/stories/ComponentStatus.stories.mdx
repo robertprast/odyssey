@@ -1,41 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import { Markdown } from '../.storybook/components';
+import content from '../../../COMPONENT_STATUS.md'
 
 <Meta title="Welcome/Status" />
 
-# Status
-
-TODO: This content should be imported from the monorepo README.
-
-| Symbol            | Description    |
-| ----------------- | -------------- |
-| 🟢                | Done/Available |
-| 🟡                | In Progress    |
-| ⭕                | To-do          |
-| 🔴                | Deprecated     |
-| ⚪                | Not Applicable |
-
-
-# Base/Tokens
-
-| Syntax       | SCSS        | Web Component  | React | Documentation  |
-| ------------ | ----------- | -------------- | ----- | -------------- |
-| Icons        | ⭕          | ⭕             | ⭕     | ⭕             |
-
-# Components
-
-| Syntax       | SCSS        | Web Component  | React | Documentation  |
-| ------------ | ----------- | -------------- | ----- | -------------- |
-| Button       | 🟢          | ⭕             | ⭕     | ⭕             |
-| Checkbox     | 🟢          | ⭕             | ⭕     | ⭕             |
-| Field Labels | ⭕          | ⭕             | ⭕     | ⭕             |
-| Link         | 🟢          | ⭕             | ⭕     | ⭕             |
-| Modal        | 🟢          | ⭕             | ⭕     | ⭕             |
-| Radio Button | 🟢          | ⭕             | ⭕     | ⭕             |
-| Select       | ⭕          | ⭕             | ⭕     | ⭕             |
-| Status       | 🟢          | ⭕             | ⭕     | ⭕             |
-| Tab          | 🟢          | ⭕             | ⭕     | ⭕             |
-| Table        | ⭕          | ⭕             | ⭕     | ⭕             |
-| Tag          | 🟢          | ⭕             | ⭕     | ⭕             |
-| Text Input   | ⭕          | ⭕             | ⭕     | ⭕             |
-| Toast        | 🟢          | ⭕             | ⭕     | ⭕             |
-| Tooltip      | 🟢          | ⭕             | ⭕     | ⭕             |
+<Markdown content={content} />

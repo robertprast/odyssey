@@ -1,3 +1,7 @@
+<hr />
+# TODO: Refactor content
+<hr />
+
 [![Travis CI Status](http://img.shields.io/travis/okta/odyssey.svg?label=travis)](https://travis-ci.org/okta/odyssey/master)
 
 # Odyssey
