@@ -1,4 +1,4 @@
-@import "@okta/odyssey";
+@import '@okta/odyssey';
 
 @font-face {
   font-family: 'Whyte';
@@ -47,3 +47,10 @@
 // CDN like Whyte has.
 
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+
+.sbdocs {
+  &.sbdocs-ul {
+    max-width: $max-line-length;
+  }
+}

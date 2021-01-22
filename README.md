@@ -1,99 +1,68 @@
-<hr />
-# TODO: Refactor content
-<hr />
+[![GitHub Build Status](https://img.shields.io/github/workflow/status/okta/odyssey/preview)](https://img.shields.io/github/workflow/status/okta/odyssey/preview)
+![Lerna Version](https://img.shields.io/github/lerna-json/v/okta/odyssey)
+![Odyssey supports WCAG 2.0 AA standards](https://img.shields.io/badge/wcag-2.0%20AA-informational)
+![Odyssey supports WCAG 2.0 AA standards](https://img.shields.io/badge/license-Apache%202.0-informational)
 
-[![Travis CI Status](http://img.shields.io/travis/okta/odyssey.svg?label=travis)](https://travis-ci.org/okta/odyssey/master)
+# Odyssey Design System
 
-# Odyssey
-
-Odyssey is Okta’s official design system that consists of reusable components to design and build products, websites, and features.
-
-**Table of Contents**
-
-<!-- TOC depthFrom:2 -->
-
-- [Getting Started](#getting-started)
-    - [Running the Design System Docs](#running-the-design-system-docs)
-- [Packages](#packages)
-    - [Monorepo](#monorepo)
-    - [Versioning](#versioning)
-    - [Development](#development)
-        - [Publishing a new version](#publishing-a-new-version)
-
-<!-- /TOC -->
-
-## Getting started
-
-We use [Yarn](https://github.com/yarnpkg/yarn) as our node package manager client. To install Yarn, check out their [installation instructions](https://yarnpkg.com/getting-started/install).
-
-```bash
-# Clone this repo and navigate into it
-
-git clone git@github.com:okta/odyssey.git
-cd odyssey
-
-# Install all package dependencies
-yarn install
-```
-
-### Running the design system docs
-
-Want to see Odyssey in action? Our `docs` package contains a static website styled using Odyssey. Simply run the following command to launch it:
-
-```bash
-# Generates the design docs website
-yarn docs
-```
-
-Once the website is built, visit <http://localhost:8080/> in your browser.
+This repository contains the code for Okta's Design System Odyssey. It includes SCSS, Icons, Web, and React Components used to build products and experiences at Okta.
 
 ## Packages
 
-### Monorepo
+| Package/README                                                                                                        | Description                                                              |
+| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [@okta/odyssey](https://github.com/okta/odyssey/tree/master/packages/odyssey/README.md)                               | Odyssey SCSS, includes components, includes base and reset styles.       |
+| [@okta/odyssey-icons](https://github.com/okta/odyssey/tree/master/packages/odyssey-icons/README.md)                   | Odyssey SVG icons.                                                       |
+| [@okta/odyssey-web-components](https://github.com/okta/odyssey/tree/master/packages/odyssey-web-components/README.md) | Odyssey web components built using [Stencil.js](https://stenciljs.com/). |
+| [@okta/odyssey-react](https://github.com/okta/odyssey/tree/master/packages/odyssey-react/README.md)                   | Odyssey react built using [React](https://reactjs.org/).                 |
 
-This repository is managed as a **monorepo** using [Yarn Workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/) for dev dependencies and [Lerna](https://lernajs.io/) for everything else. You can think of each package as a separate npm module - each with their own dependencies, package name, and versioned using [Semantic Versioning](https://semver.org/).
+## Git Workflow
+This project takes care to use standard gitflow workflow with minor exceptions.
 
-Packages are parsed from the `workspaces` property in [package.json](package.json), and adhere to this structure:
+### Branches
+- `master` is our "final" production codebase, code in here is tagged with a semver and release notes. Merge rights here are restricted to certain team members (or in this instance, me alone, because its a technical exercise, not a real live production project, but humor me here...)
+- `develop` is a working branch which contains the latest working code from different branches. A pull request is required to merge in to this branch
+- `feature/${branch-name}` the feature prefix is reserved for new feature work
+- `bugfix/${branch-name}` the bugfix prefix is reserved for existing features that have bugfixes
 
-```bash
-packages/
-  docs/
-  odyssey-icons/
-  odyssey/
-  vuepress-theme-nimatron/
+Additionally, `refactor` and `hotfix` branches may be necessary in certain instances. Use at your discression.
+
+### tl;dr
 ```
 
-### Versioning
+           -▸ develop --▸ feature/branch-name --▸ | --▸ commit #1
+                 ▲                                | --▸ commit #2
+                 |                                | --▸ commit #3
+  Squash & Merge |                                | --▸ commit #4
+                 |                                ▼
+                 ╰--------- Pull Request ---------╯
 
-| Package | Status | Description |
-| -------- | ----- | ------ |
-| [odyssey](/packages/odyssey) | [![npm version](https://img.shields.io/npm/v/@okta/odyssey.svg?style=flat-square)](https://www.npmjs.com/package/@okta/odyssey) | All necessary SCSS and fonts to utilize Odyssey, Okta's design system. |
+```
 
-### Development
+## Browser Support
+Odyssey browser support mirrors Okta's [Supported platforms, browsers, and operating systems](https://help.okta.com/en/prod/Content/Topics/Miscellaneous/Platforms_Browser_OS_Support.htm) and is as follows:
 
-#### Publishing a new version
+| Browser              | Support Policy                                                                                                          |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Internet Explorer 11 | Supported for the desktop mode of Windows 8. Metro Mode is not supported.                                               |
+| Edge                 | Latest public version supported.                                                                                        |
+| Chrome               | Latest public version supported.                                                                                        |
+| Safari               | Latest public version supported.                                                                                        |
+| Firefox              | Latest public version for Rapid Release supported. <br /> Latest public version for Extended Support Release supported. |
 
-Before publishing a new version, ensure the following steps are performed:
+## Contributing
 
-1. All changes our outlined in the package's `CHANGELOG` file. If there are breaking changes, attempt to create a migration guide.
+## Licenses
 
-2. Increment the package versions following [Semantic Versioning](https://semver.org/).
+All source code, imagery, and icons fall under the [Apache Version 2.0 License](https://github.com/okta/odyssey/blob/master/LICENSE).
 
-    ```bash
-    yarn lerna-version
+## Feature Requests, Bugs & Feedback
 
-    # Console output will appear similar to:
-    ? Select a new version (currently 0.0.1) (Use arrow keys)
-    ❯ Patch (0.0.2)
-      Minor (0.1.0)
-      Major (1.0.0)
-      Prepatch (0.0.2-alpha.0)
-      Preminor (0.1.0-alpha.0)
-      Premajor (1.0.0-alpha.0)
-      Custom Prerelease
-      Custom Version
-    ```
+### Oktanauts
+- Log an issue in in JIRA, use the `OKTA` project, and be sure to apply the `Team: UICore Odyssey` component and the apropriate issue type.
+- Reach out to us directly in the [#odyssey](https://okta.slack.com/archives/C7T2H3KNJ) Slack channel.
+- All other users please open a [GitHub issue](https://github.com/okta/odyssey/issues/new/choose).
 
-3. Commit your changes and submit the `CHANGELOG` for approval. Once approved, merge into `master`.
+## Thank you
 
-4. (*Internal use only*) Reach out in the `#odyssey` slack channel to promote the package to public NPM.
+If you read this whole thing, thank you! 🌟

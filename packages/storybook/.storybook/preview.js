@@ -10,7 +10,7 @@ export const parameters = {
   options: {
     storySort: {
       method: '',
-      order: ["Welcome", ["Introduction", "Status", "Code Style & Conventions"], "Base", "Components", "Patterns"], 
+      order: ["Welcome", ["Introduction (README)", "Code Style & Conventions", "Component Status"], "Base", "Components", "Patterns"], 
       locales: '', 
     },
   },
@@ -32,7 +32,7 @@ export const parameters = {
       },
       {
         name: 'gradient',
-        value: 'linear-gradient(135deg,#00297a,#1662dd)',
+        value: 'linear-gradient(135deg,#00297a,#1662dd) no-repeat',
       },
     ],
   },
