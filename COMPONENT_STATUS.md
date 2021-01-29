@@ -38,6 +38,6 @@ If you have questions, please reach out in the [#odyssey](https://okta.slack.com
 | Tab          | 🟢         | 🟢          | ⭕             | ⭕     | ⭕             |
 | Table        | 🟢         | ⭕          | ⭕             | ⭕     | ⭕             |
 | Tag          | 🟢         | 🟢          | ⭕             | ⭕     | ⭕             |
-| Text Input   | 🟢         | ⭕          | ⭕             | ⭕     | ⭕             |
+| Text Input   | 🟢         | 🟢          | ⭕             | ⭕     | ⭕             |
 | Toast        | 🟢         | 🟢          | ⭕             | ⭕     | ⭕             |
 | Tooltip      | 🟢         | 🟢          | ⭕             | ⭕     | ⭕             |

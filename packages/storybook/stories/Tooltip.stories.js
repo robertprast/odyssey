@@ -6,6 +6,15 @@ export default {
   title: `Components/${COMPONENT_NAME}/SCSS`,
   parameters: {
     layout: "centered"
+  },
+  argTypes: {
+    position: {
+      description: 'Button appearance based on use-case',
+      control: {
+        type: 'select',
+        options: ['top', 'right', 'bottom', 'left'],
+      }
+    },
   }
 };
 

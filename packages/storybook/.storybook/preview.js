@@ -1,6 +1,5 @@
 import "./preview.scss";
 
-
 export const parameters = {
   controls: { expanded: true },
   grid: {
@@ -10,14 +9,22 @@ export const parameters = {
   options: {
     storySort: {
       method: '',
-      order: ["Welcome", ["Introduction (README)", "Code Style & Conventions", "Component Status"], "Base", "Components", "Patterns"], 
-      locales: '', 
+      order: [
+        "Welcome",
+        [
+          "Introduction (README)",
+          "Code Style & Conventions",
+          "Component Status"
+        ],
+        "Base",
+        "Components",
+        "Patterns"
+      ],
+      locales: '',
     },
   },
   previewTabs: {
-    'storybook/docs/panel': {
-      hidden: false
-    }
+    docs: { hidden: true },
   },
   backgrounds: {
     default: 'white',
@@ -25,10 +32,6 @@ export const parameters = {
       {
         name: 'white',
         value: '#ffffff',
-      },
-      {
-        name: 'gray 900',
-        value: '#1d1d21',
       },
       {
         name: 'gradient',

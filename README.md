@@ -1,7 +1,7 @@
-[![GitHub Build Status](https://img.shields.io/github/workflow/status/okta/odyssey/preview)](https://img.shields.io/github/workflow/status/okta/odyssey/preview)
-![Lerna Version](https://img.shields.io/github/lerna-json/v/okta/odyssey)
+[![Go to GitHub Build](https://img.shields.io/github/workflow/status/okta/odyssey/preview)](https://img.shields.io/github/workflow/status/okta/odyssey/preview)
+![Odyssey uses Lerna](https://img.shields.io/github/lerna-json/v/okta/odyssey)
 ![Odyssey supports WCAG 2.0 AA standards](https://img.shields.io/badge/wcag-2.0%20AA-informational)
-![Odyssey supports WCAG 2.0 AA standards](https://img.shields.io/badge/license-Apache%202.0-informational)
+![Odyssey is covered under the Apache Version 2.0 license](https://img.shields.io/badge/license-Apache%202.0-informational)
 
 # Odyssey Design System
 
@@ -20,12 +20,12 @@ This repository contains the code for Okta's Design System Odyssey. It includes 
 This project takes care to use standard gitflow workflow with minor exceptions.
 
 ### Branches
-- `master` is our "final" production codebase, code in here is tagged with a semver and release notes. Merge rights here are restricted to certain team members (or in this instance, me alone, because its a technical exercise, not a real live production project, but humor me here...)
-- `develop` is a working branch which contains the latest working code from different branches. A pull request is required to merge in to this branch
+- `master` contains code for the latest version of Odyssey. The code in here is tagged with a semver and release notes. This is a protected branch.
+- `develop` is a working branch which contains the latest working code from different branches. This is a protected branch.
 - `feature/${branch-name}` the feature prefix is reserved for new feature work
 - `bugfix/${branch-name}` the bugfix prefix is reserved for existing features that have bugfixes
 
-Additionally, `refactor` and `hotfix` branches may be necessary in certain instances. Use at your discression.
+Additionally, `refactor` and `hotfix` branch prefixes may be necessary in certain instances. Use at your discression.
 
 ### tl;dr
 ```
