@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@applitools/eyes-storybook": "^3.16.3",
     "@babel/core": "^7.12.10",
     "@storybook/addon-actions": "next",
     "@storybook/addon-essentials": "next",
@@ -23,6 +24,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
+    "eyes-storybook": "eyes-storybook",
     "build": "build-storybook -output-dir ./dist"
   }
 }

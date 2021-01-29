@@ -1,69 +1,35 @@
-name: preview
+name: Applitools  
+
 on:
-  pull_request:
+  push:
     branches:
-      - master
-      - develop
-      - "release/**"
+      - '**'
+        
+env:
+    APPLITOOLS_BATCH_ID: ${{ github.sha }}
+
 jobs:
-  deployment:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v2
+      - name: Log Git SHA
+        run: echo "$GITHUB_SHA"
+      - name: Use Node.js
+        uses: actions/setup-node@v1
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-
-      - name: cofigure aws
-        uses: aws-actions/configure-aws-credentials@v1
+          node-version: '14.x'
+      - run: npm ci
+      - name: Run Tests
+        run: npm run cypress:ci
+    
+  batch-completion-notification:
+    needs: run-tests
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Applitools batch status 
+        uses: wei/curl@v1.1.1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-      - name: set $SHA7
-        run: echo "SHA7=$(git rev-parse --short ${{ github.event.pull_request.head.sha || github.sha }})" >> $GITHUB_ENV
-      - name: set $PREVIEW_URL
-        run: echo "PREVIEW_URL="https://${SHA7}.ods.dev"" >> $GITHUB_ENV
-
-      - name: get COMMIT_MSG
-        run: echo "COMMIT_MSG=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
-
-      - name: install dependencies
-        run: yarn
-
-      - name: test
-        run: ./node_modules/lerna/cli.js run test
-
-      - name: build docs
-        run: yarn workspace @okta/design-docs build
-
-      - name: 'deploy: create'
-        uses: bobheadxi/deployments@v0.4.2
-        id: deployment
-        with:
-          step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
-          env: preview
-          ref: ${{ github.head_ref }}
-
-      - name: 'deploy: 🚀 start'
-        run: |
-          aws s3 sync ./packages/docs/dist/ s3://ods.dev/$SHA7 --delete
-
-      - name: 'deploy: update status'
-        uses: bobheadxi/deployments@v0.4.2
-        if: always()
-        with:
-          step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: ${{ env.PREVIEW_URL }}
-
-      - name: 'notify: slack'
-        run: sh ./scripts/notify-slack.sh
-        env:
-          INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          AUTHOR_NAME: ${{github.actor}}
-          BRANCH_NAME: ${{github.head_ref}}
-          PULL_REQUEST_ID: ${{github.event.pull_request.number}}
+          args: -d "" -X POST https://eyesapi.applitools.com/api/externals/github/servers/github.com/commit/${{ env.APPLITOOLS_BATCH_ID }}/complete?apiKey=${{ secrets.APPLITOOLS_API_KEY }}
