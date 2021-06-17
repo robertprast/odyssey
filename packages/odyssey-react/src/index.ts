@@ -16,6 +16,8 @@ import Tag from './components/Tag';
 import TextArea from './components/TextArea';
 import TextInput from './components/TextInput';
 import Tooltip from './components/Tooltip';
+import Menu from './components/Menu';
+import MenuItem from './components/MenuItem';
 
 export {
   Button,
@@ -23,5 +25,7 @@ export {
   Tag,
   TextArea,
   TextInput,
-  Tooltip
+  Tooltip,
+  Menu,
+  MenuItem
 };

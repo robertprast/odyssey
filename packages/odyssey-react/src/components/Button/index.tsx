@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import type { FunctionComponent, MouseEventHandler, ReactText } from 'react';
 import { useCx, useOmit } from '../../utils';
 
@@ -50,7 +50,7 @@ export type Props = {
  * @example
  * <Button variant="primary" onClick={() => {}}>Button label</Button>
  */
-const Button: FunctionComponent<Props> = (props) => {
+const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const {
     children,
     disabled,
@@ -71,6 +71,7 @@ const Button: FunctionComponent<Props> = (props) => {
   return (
     <button
       {...omitProps}
+      ref={ref}
       className={componentClass}
       disabled={disabled}
       onClick={onClick}
@@ -78,6 +79,6 @@ const Button: FunctionComponent<Props> = (props) => {
       <span className="ods-button--label">{children}</span>
     </button>
   );
-};
+});
 
 export default Button;
