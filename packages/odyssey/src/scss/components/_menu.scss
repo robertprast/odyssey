@@ -1,0 +1,111 @@
+/*!
+ * Copyright (c) 2018-present, Okta, Inc. and/or its affiliates. All rights reserved.
+ * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
+ *
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and limitations under the License.
+ */
+
+$item-padding: $spacing-xs $spacing-xs $spacing-xs $spacing-s;
+$default-border-radius: 4px;
+
+.ods-action-list {
+  visibility: hidden;
+  z-index: 4;
+  margin: $spacing-s 0;
+  padding: $spacing-s 0;
+  border-radius: $default-border-radius;
+  background: $white;
+  box-shadow: 0 0 4px transparentize(#1D1D21, .82);
+  pointer-events: none;
+
+  ul[role="menu"] {
+    z-index: 4;
+    margin: 0;
+    padding: 0;
+    li { list-style-type: none; }
+  }
+
+  &.is-ods-action-list-visible {
+    visibility: visible;
+    pointer-events: all;
+  }
+}
+
+.ods-action-list-item {
+  &.is-ods-action-list-item-link a {
+    display: block;
+    margin: 0 $spacing-s;
+    padding: $item-padding;
+    border-radius: $default-border-radius;
+
+    &:hover {
+      background: cv('blue', '000');
+      text-decoration: none;
+    }
+
+    &:focus {
+      @include outline;
+
+      background: cv('blue', '000');
+    }
+  }
+
+  &.is-ods-action-list-item-separator {
+    margin: $spacing-s 0;
+    border-bottom: 1px solid $border-color-display;
+  }
+
+  // Visual Variants
+  &.is-ods-action-list-item-danger {
+    color: cv('red', '500');
+
+    &:hover {
+      background: cv('red', '000');
+      text-decoration: none;
+    }
+
+    &:focus {
+      @include outline($focus-ring-danger);
+
+      background: cv('red', '000');
+    }
+  }
+
+  &.is-ods-action-list-item-danger a {
+    color: cv('red', '500');
+
+    &:hover {
+      background: cv('red', '000');
+      text-decoration: none;
+    }
+
+    &:focus {
+      @include outline($focus-ring-danger);
+
+      background: cv('red', '000');
+    }
+  }
+
+  &.is-ods-action-list-item-overlay a {
+    color: $text-body;
+
+    &:hover {
+      border-color: transparent;
+      background-color: cv('gray', '100');
+    }
+
+    &:focus {
+      outline: 0;
+      background-color: cv('gray', '100');
+    }
+  }
+
+  &.is-ods-action-list-item-prominent {
+    font-weight: bold;
+  }
+}
