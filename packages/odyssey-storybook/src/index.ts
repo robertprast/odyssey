@@ -24,12 +24,35 @@ module.exports = {
       propFilter: (prop: PropItem) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },
+
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@pxblue/storybook-rtl-addon',
   ],
+
+  previewHead () {
+    return `
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+
+      <style type="text/css">
+        .sbdocs.sbdocs-ul {
+          max-width: 32em;
+        }
+      </style>
+    `;
+  },
+
+  config (entry = []) {
+    return [
+      ...entry,
+      require.resolve('./defaultParameters')
+    ];
+  },
+
   babel (config: TransformOptions) {
     return {
       ...config,
@@ -37,6 +60,7 @@ module.exports = {
       configFile: false
     };
   },
+
   webpackFinal (config: Configuration = {}) {
     config.module?.rules?.push(
       {
