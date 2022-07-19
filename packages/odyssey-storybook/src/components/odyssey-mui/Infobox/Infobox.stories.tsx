@@ -51,7 +51,7 @@ export default {
 const DefaultTemplate: Story = (args) => {
   const {} = args;
   return (
-    <Alert severity={args.severity} role="status" variant="infobox">
+    <Alert severity={args.severity} role={args.role} variant="infobox">
       <AlertTitle>{args.title}</AlertTitle>
       {args.content}
     </Alert>

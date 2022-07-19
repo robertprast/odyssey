@@ -31,7 +31,21 @@ export const components: ThemeOptions["components"] = {
           },
         }),
         ...(ownerState.variant === "banner" && {
+          position: "relative",
+          justifyContent: "center",
+          alignItems: "center",
           borderWidth: 0,
+        }),
+      }),
+      action: ({ ownerState, theme }) => ({
+        ...(ownerState.variant === "banner" && {
+          padding: 0,
+          marginLeft: theme.spacing(4),
+          marginRight: 0,
+          top: "50%",
+          right: theme.spacing(4),
+          position: "absolute",
+          transform: "translateY(-50%)",
         }),
       }),
       icon: ({ ownerState, theme }) => ({
